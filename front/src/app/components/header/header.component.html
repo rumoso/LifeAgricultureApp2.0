@@ -1,0 +1,24 @@
+<ion-header>
+</ion-header>
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+
+    
+    <ion-title color="primary" class="ion-text-capitalize">
+      <img  width="35" src="assets/img/IcoAgri.png">
+      {{title}}
+    </ion-title>
+
+    <ion-buttons slot="end">
+      <ion-button (click)="cerrarSesion()"
+                  color="danger">
+        <ion-icon slot="icon-only" name="exit"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    
+  </ion-toolbar>
+</ion-header>

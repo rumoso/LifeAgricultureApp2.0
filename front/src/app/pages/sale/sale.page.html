@@ -1,0 +1,133 @@
+<app-header title="Venta"></app-header>
+
+<ion-content [fullscreen]="true">
+  
+  <ion-grid>
+
+    <ion-row>
+      <ion-col size="12">
+        <ion-text color="primary">
+          <h1>
+            <ion-icon name="cash-outline"></ion-icon> Total: {{ sale.total | currency }}
+          </h1>
+        </ion-text>
+      </ion-col>
+    </ion-row>
+    
+    <ion-row>
+      <ion-col size="12">
+        <ion-list>
+          <ion-item>
+            <ion-icon name="people-circle-outline"></ion-icon>
+            <ion-select aria-label="Cliente"
+            interface="action-sheet"
+            placeholder="Selecciona un Cliente"
+            [(ngModel)]="sale.idClient">
+              <ion-select-option *ngFor="let item of clientsList" value="{{ item.idClient}}">{{ item.name }}</ion-select-option>
+            </ion-select>
+          </ion-item>
+        </ion-list>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col size="12">
+        <ion-list>
+          <ion-item>
+            <ion-icon name="bag-handle-outline"></ion-icon>
+            <ion-select aria-label="Producto"
+            interface="action-sheet"
+            placeholder="Selecciona una producto"
+            [(ngModel)]="productSelect.idProduct"
+            (ionChange)="selectProductChange($event)">
+              <ion-select-option *ngFor="let item of productsList" value="{{ item.idProduct }}">{{ item.name }}</ion-select-option>
+            </ion-select>
+          </ion-item>
+        </ion-list>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col size="4">
+        <ion-input type="number"
+        label="Precio"
+        label-placement="floating"
+        fill="outline"
+        placeholder="Precio"
+        [(ngModel)]="productSelect.precio"></ion-input>
+      </ion-col>
+      <ion-col size="4">
+        <ion-input type="number"
+        label="Cantidad"
+        label-placement="floating"
+        fill="outline"
+        placeholder="Cantidad"
+        [(ngModel)]="productSelect.cantidadSale"></ion-input>
+      </ion-col>
+      <ion-col size="4">
+        <ion-text color="primary">
+          <h4>{{ productSelect.UMDesc }}</h4>
+        </ion-text>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col size="12">
+        <ion-textarea 
+        label="Observaciones (Opcionales)"
+        labelPlacement="floating"
+        fill="outline"
+        placeholder="Agregue una observación"
+        [(ngModel)]="productSelect.observaciones"></ion-textarea>
+      </ion-col>
+    </ion-row>
+    
+    <ion-row>
+      <ion-col size="12">
+        <ion-button color="success"
+        *ngIf="productSelect.idProduct > 0 && productSelect.cantidadSale > 0 && sale.idClient > 0"
+        (click)="addProduct()">
+          <ion-icon slot="start" name="add-circle-outline"></ion-icon>
+          Agregar
+        </ion-button>
+        <ion-button color="success"
+        *ngIf="productSelect.idProduct == 0 && sale.total > 0"
+        (click)="saveSale()">
+          <ion-icon slot="start" name="save-outline"></ion-icon>
+          Guardar
+        </ion-button>
+        <ion-button (click)="backSaleList()">
+          <ion-icon slot="start" name="close-circle-outline"></ion-icon>
+          Cerrar
+        </ion-button>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col size="12">
+        <ion-list>
+          <ion-item *ngFor="let item of sale.productsSelect">
+        
+            <ion-grid>
+              <ion-row>
+                
+                <ion-col size="12">
+                  <ion-label>
+                    <h2>{{ item.name }}</h2>
+                    <p>{{ item.cantidadSale | number }} {{ item.UMDesc }} a {{item.precio | currency}} pesos</p>
+                    <p>Total: {{ item.cantidadSale * item.precio | currency}}</p>
+                    <p *ngIf="item.observaciones">Observaciones:</p>
+                    <p *ngIf="item.observaciones">{{ item.observaciones }}</p>
+                  </ion-label>
+                </ion-col>
+                
+              </ion-row>
+            </ion-grid>
+        
+          </ion-item>
+        </ion-list>
+      </ion-col>
+    </ion-row>
+
+  </ion-grid>
+</ion-content>

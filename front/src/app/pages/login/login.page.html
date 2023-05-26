@@ -1,0 +1,49 @@
+<ion-header [translucent]="true">
+  <ion-toolbar class="text-aling-center">
+    <ion-title>Life Agriculture App</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-grid>
+
+    <ion-row>
+      <ion-col size="12" class="text-aling-center">
+        <img  width="50" src="assets/img/IcoAgri.png">
+      </ion-col>
+    </ion-row>
+
+      <ion-row>
+        <ion-col size="12">
+          <ion-input label="Usuario"
+          label-placement="floating"
+          fill="outline"
+          placeholder="Ingresa el Usuario"
+          [(ngModel)]="login.username"></ion-input>
+        </ion-col>
+      </ion-row>
+  
+      <ion-row>
+        <ion-col size="12">
+          <ion-input type="password"
+          label="Contraseña"
+          label-placement="floating"
+          fill="outline"
+          placeholder="Ingresa la Contraseña"
+          [(ngModel)]="login.pwd"></ion-input>
+        </ion-col>
+      </ion-row>
+  
+      <ion-row>
+        <ion-col class="text-aling-center">
+          <ion-button (click)="loginON()"
+                      color="primary"
+                      shape="round"
+                      [disabled]="!( login.username.length > 0 && login.pwd.length > 0 )">
+            Entrar
+          </ion-button>
+        </ion-col>
+      </ion-row>
+
+  </ion-grid>
+</ion-content>

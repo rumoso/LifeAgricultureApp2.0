@@ -1,0 +1,72 @@
+<app-header title="Cliente" icon="bag-handle"></app-header>
+
+<ion-content [fullscreen]="true">
+  
+  <ion-grid>
+    
+    <ion-row>
+      <ion-col size="12">
+        <ion-input label="Nombre"
+        label-placement="floating"
+        fill="outline"
+        placeholder="Ingresa el nombre"
+        [(ngModel)]="client.name"></ion-input>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col size="12">
+        <ion-textarea
+        label="Dirección"
+        labelPlacement="floating"
+        fill="outline"
+        placeholder="Agregue una dirección"
+        [(ngModel)]="client.address"></ion-textarea>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col size="12">
+        <ion-input label="Tel:"
+        label-placement="floating"
+        fill="outline"
+        placeholder="Ingresa el teléfono"
+        [(ngModel)]="client.tel"></ion-input>
+      </ion-col>
+    </ion-row>
+    
+    <ion-row>
+      <ion-col size="12">
+        <ion-input label="Cel:"
+        label-placement="floating"
+        fill="outline"
+        placeholder="Ingresa el celular"
+        [(ngModel)]="client.cel"></ion-input>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col size="12">
+        <ion-button color="success"
+        (click)="saveClient()"
+        [disabled]="!( client.name.length > 0 )">
+          <ion-icon slot="start" name="save-outline"></ion-icon>
+          Guardar
+        </ion-button>
+        <ion-button color="danger"
+        (click)="DeleteClient()"
+        *ngIf="client.idClient > 0">
+          <ion-icon slot="start" name="trash-outline"></ion-icon>
+          Borrar
+        </ion-button>
+        <ion-button
+        (click)="cerrar()">
+          <ion-icon slot="start" name="close-circle-outline"></ion-icon>
+          Cerrar
+        </ion-button>
+      </ion-col>
+    </ion-row>
+
+  </ion-grid>
+
+</ion-content>

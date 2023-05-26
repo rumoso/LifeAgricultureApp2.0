@@ -1,0 +1,66 @@
+<app-header title="Clientes" icon="bag-handle"></app-header>
+
+<ion-content [fullscreen]="true">
+  
+  <ion-grid>
+
+    <ion-row>
+      <ion-col size="12">
+        <ion-button (click)="addClient(0)">
+          <ion-icon slot="start"
+          name="add"></ion-icon>
+          Agregar nuevo cliente
+        </ion-button>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col size="12">
+        <ion-searchbar [debounce]="1000" (ionInput)="EventInput($event)"></ion-searchbar>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col size="12">
+        <ion-list>
+          <ion-item *ngFor="let item of oClientsList">
+        
+            <ion-grid (click)="addClient( item.idClient )">
+              <ion-row>
+                
+                <ion-col size="12">
+                  <ion-label>
+                    <h2>
+                      <ion-icon name="people-circle"></ion-icon> {{item.name}}
+                    </h2>
+                    <h3>
+                      <ion-icon name="location-outline"></ion-icon> {{item.address}}
+                    </h3>
+                    <h3>
+                      <ion-icon name="call-outline"></ion-icon> {{item.tel}}
+                    </h3>
+                    <h3>
+                      <ion-icon name="phone-portrait-outline"></ion-icon> {{item.cel}}
+                    </h3>
+                  </ion-label>
+                </ion-col>
+                
+              </ion-row>
+            </ion-grid>
+            <!--<ion-avatar slot="start">
+              <img src="https://www.pngarts.com/files/3/Pokemon-Pikachu-Transparent-Background-PNG.png">
+            </ion-avatar>-->
+            
+        
+          </ion-item>
+          <ion-infinite-scroll (ionInfinite)="onIonInfinite($event)">
+            <ion-infinite-scroll-content loadingText="Please wait..." loadingSpinner="bubbles" ></ion-infinite-scroll-content>
+          </ion-infinite-scroll>
+        </ion-list>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+
+
+</ion-content>

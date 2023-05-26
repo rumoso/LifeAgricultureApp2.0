@@ -1,0 +1,101 @@
+<app-header title="Producto" icon="bag-handle"></app-header>
+
+<ion-content [fullscreen]="true">
+  
+  <ion-grid>
+    
+    <ion-row>
+      <ion-col size="12">
+        <ion-input label="Nombre"
+        label-placement="floating"
+        fill="outline"
+        placeholder="Ingresa el nombre"
+        [(ngModel)]="product.name"></ion-input>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size="12">
+        <ion-input type="number"
+        label="Precio" 
+        label-placement="floating" 
+        fill="outline" 
+        placeholder="Ingresa el precio"
+        [(ngModel)]="product.precio"></ion-input>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size="12">
+        <ion-list>
+          <ion-item>
+            <ion-select aria-label="Unidad de medida"
+            interface="action-sheet"
+            placeholder="Selecciona una unidad de medida"
+            [(ngModel)]="product.idUnidadMedida">
+              <ion-select-option *ngFor="let item of unidadMedidaList" value="{{ item.idUnidadMedida }}">{{ item.desc }}</ion-select-option>
+            </ion-select>
+          </ion-item>
+        </ion-list>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size="12">
+        <ion-button color="success"
+        (click)="saveProduct()"
+        [disabled]="!( product.name.length > 0 && product.precio > 0 && product.idUnidadMedida.length > 0)">
+          <ion-icon slot="start" name="save-outline"></ion-icon>
+          Guardar
+        </ion-button>
+        <ion-button color="danger"
+        (click)="DeleteProduct()"
+        *ngIf="product.idProduct > 0">
+          <ion-icon slot="start" name="trash-outline"></ion-icon>
+          Borrar
+        </ion-button>
+        <ion-button (click)="backProductList()">
+          <ion-icon slot="start" name="close-circle-outline"></ion-icon>
+          Cerrar
+        </ion-button>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col size="12">
+        <ion-label color="primary">Cantidad en inventario: {{product.cantidad | number}}</ion-label>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col size="12">
+        <ion-list>
+          <ion-item *ngFor="let item of OGetInventaryByIDProductListWithPage">
+        
+            <ion-grid>
+              <ion-row>
+                
+                <ion-col size="12">
+                  <ion-label>
+                    <h2>
+                      <ion-icon name="bar-chart-outline"></ion-icon> {{item.movName}}
+                    </h2>
+                    <h3>
+                      <ion-icon name="person-circle-outline"></ion-icon> {{item.userName}}
+                    </h3>
+                    <h3>
+                      <ion-icon name="cube-outline"></ion-icon> {{item.cantidad | number}} <ion-icon name="arrow-forward-outline"></ion-icon> {{ item.cantidadNow | number }}
+                    </h3>
+                    <h3 *ngIf="item.description">
+                      <ion-icon name="document-text-outline"></ion-icon> {{ item.description }}
+                    </h3>
+                  </ion-label>
+                </ion-col>
+                
+              </ion-row>
+            </ion-grid>
+        
+          </ion-item>
+        </ion-list>
+      </ion-col>
+    </ion-row>
+
+  </ion-grid>
+</ion-content>

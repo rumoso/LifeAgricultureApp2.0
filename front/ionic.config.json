@@ -1,0 +1,7 @@
+{
+  "name": "LifeAgricultureApp",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
