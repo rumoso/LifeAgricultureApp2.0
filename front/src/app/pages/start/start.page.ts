@@ -29,11 +29,14 @@ export class StartPage implements OnInit {
     , private navCtrl: NavController
     , private salesServ: SalesService
     , private uiServ: UiService
-  ) { }
+  ) {
+    
+  }
 
   async ngOnInit() {
     await this.authServ.validaSesion();
     this.getSalesHeaderListWithPage(this.pagination, null);
+    
   }
 
   public async getSalesHeaderListWithPage( pag: Pagination, ev: any ){

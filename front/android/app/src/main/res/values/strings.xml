@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">LifeAgricultureApp</string>
+    <string name="title_activity_main">LifeAgricultureApp</string>
+    <string name="package_name">com.ruitza.LifeAgricultureApp</string>
+    <string name="custom_url_scheme">com.ruitza.LifeAgricultureApp</string>
+</resources>

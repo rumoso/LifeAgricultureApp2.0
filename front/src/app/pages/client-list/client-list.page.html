@@ -33,13 +33,13 @@
                     <h2>
                       <ion-icon name="people-circle"></ion-icon> {{item.name}}
                     </h2>
-                    <h3>
+                    <h3 *ngIf="item.address">
                       <ion-icon name="location-outline"></ion-icon> {{item.address}}
                     </h3>
-                    <h3>
+                    <h3 *ngIf="item.tel">
                       <ion-icon name="call-outline"></ion-icon> {{item.tel}}
                     </h3>
-                    <h3>
+                    <h3 *ngIf="item.cel">
                       <ion-icon name="phone-portrait-outline"></ion-icon> {{item.cel}}
                     </h3>
                   </ion-label>

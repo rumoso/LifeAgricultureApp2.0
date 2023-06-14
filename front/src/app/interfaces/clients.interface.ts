@@ -4,6 +4,8 @@ export interface ClientCat {
     address:      string;
     tel:          string;
     cel:          string;
+    cultivo:      string;
+    superficie:   string;
 }
 
 export interface OGetClientsListWithPage {

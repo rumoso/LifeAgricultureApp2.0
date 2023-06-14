@@ -18,7 +18,9 @@ export class ClientPage implements OnInit {
     name: '',
     address: "",
     tel: "",
-    cel: ''
+    cel: '',
+    cultivo: '',
+    superficie: ''
   };
 
   constructor(

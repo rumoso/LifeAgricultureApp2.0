@@ -47,7 +47,7 @@
     </ion-row>
     <ion-row>
       <ion-col size="12">
-        <ion-textarea label="Observaciones (Opcionales)" labelPlacement="floating" fill="outline" placeholder="Agregue una observación"
+        <ion-textarea label="Observaciones (Opcionales)" labelPlacement="floating" fill="outline" placeholder="Agregue una observación" [autoGrow]="true"
         [(ngModel)]="inventaryCat.description"></ion-textarea>
       </ion-col>
     </ion-row>
@@ -56,7 +56,7 @@
       <ion-col size="12">
         <ion-button color="success"
         (click)="insertInventary()"
-        [disabled]="!( inventaryCat.idMovimiento.length > 0 && inventaryCat.idProduct > 0 && inventaryCat.cantidad > 0)">
+        [disabled]="!( inventaryCat.idMovimiento.length > 0 && inventaryCat.idProduct > 0 && inventaryCat.cantidad > 0) || inventaryCat.idUser != 1">
           <ion-icon slot="start" name="save-outline"></ion-icon>
           Guardar
         </ion-button>
@@ -65,3 +65,4 @@
     </ion-row>
   </ion-grid>
 </ion-content>
+[disabled]="sale.idUser != 1"

@@ -74,4 +74,12 @@ export class AuthService {
     await this.sqliteServ.clear();
     this.navCtrl.navigateRoot('/login', { animated: true });
   }
+
+  public CGetMenu(idUser: number): Observable<ResponseGet>{
+    const data = {
+      idUser: idUser
+    };
+
+    return this.http.post<ResponseGet>(`${ this.baseURL }/${ this._api }/CGetMenu`,data);
+  }
 }

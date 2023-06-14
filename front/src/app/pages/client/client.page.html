@@ -47,6 +47,20 @@
 
     <ion-row>
       <ion-col size="12">
+        <ion-textarea label="Cultivo" labelPlacement="floating" fill="outline" placeholder="Agregue información sobre los cultivos" [autoGrow]="true"
+        [(ngModel)]="client.cultivo"></ion-textarea>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col size="12">
+        <ion-textarea label="Superficie" labelPlacement="floating" fill="outline" placeholder="Agregue las superficies" [autoGrow]="true"
+        [(ngModel)]="client.superficie"></ion-textarea>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col size="12">
         <ion-button color="success"
         (click)="saveClient()"
         [disabled]="!( client.name.length > 0 )">

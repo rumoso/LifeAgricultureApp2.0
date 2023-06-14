@@ -81,6 +81,9 @@
                       <ion-icon name="person-circle-outline"></ion-icon> {{item.userName}}
                     </h3>
                     <h3>
+                      <ion-icon name="calendar-outline"></ion-icon> {{item.createDate | date:'medium'}}
+                    </h3>
+                    <h3>
                       <ion-icon name="cube-outline"></ion-icon> {{item.cantidad | number}} <ion-icon name="arrow-forward-outline"></ion-icon> {{ item.cantidadNow | number }}
                     </h3>
                     <h3 *ngIf="item.description">
